@@ -21,11 +21,6 @@ async function startVideo(id) {
 async function scanBarcode(id) {
 	if (!scanning) return;
 
-	if (!("BarcodeDetector" in window)) {
-		alert("Tento prohlížeč/zařízení nepodporuje detekci čárových kódů.");
-		return;
-	}
-
 	const barcodeDetector = new BarcodeDetector({ formats: ["itf", "code_128"] });
 
 	try {
@@ -67,6 +62,10 @@ $("#scanModal").on("hidden.bs.modal", function () {
 });
 
 function openCodeScanner(id) {
+	if (!("BarcodeDetector" in window)) {
+		//alert("Tento prohlížeč/zařízení nepodporuje detekci čárových kódů.");
+		//return;
+	}
 	startVideo(id);
 	$("#scanModal").modal("show");
 	scanning = true;
