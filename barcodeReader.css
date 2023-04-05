@@ -1,3 +1,6 @@
+#barcodeInnerBody {
+    padding: 10px;
+}
 #barcodeReaderBody {
     position: relative;
     width: 100%;

@@ -9,7 +9,7 @@ let scanning = false;
 async function startVideo(id) {
 	try {
 		const stream = await navigator.mediaDevices.getUserMedia({
-			video: { facingMode: "environment" },
+			video: { facingMode: "environment", aspectRatio: { exact: 1.5 }},
 		});
 		video.srcObject = stream;
 		video.addEventListener("loadedmetadata", async () => {

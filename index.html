@@ -24,10 +24,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div id="barcodeReaderBody">
-                    <video id="codeModalVideo" width="1280" height="720" autoplay></video>
-                    <canvas id="codeModalCanvas" width="1280" height="720" hidden></canvas>
-                    <canvas id="overlayCanvas" width="1280" height="720"></canvas>
+                <div id="barcodeInnerBody">
+                    <div id="barcodeReaderBody">
+                        <video id="codeModalVideo" width="1280" height="720" autoplay></video>
+                        <canvas id="codeModalCanvas" width="1280" height="720" hidden></canvas>
+                        <canvas id="overlayCanvas" width="1280" height="720"></canvas>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button id="codeModalClose" type="button" class="btn btn-secondary">Close</button>
