@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barcode Scanner</title>
     <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="barcodeReader.css">
 </head>
 
 <body>
@@ -23,9 +24,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <video style="width: 100%" id="codeModalVideo" width="640" height="480" autoplay></video>
-                    <canvas style="width: 100%" id="codeModalCanvas" width="640" height="480" hidden></canvas>
+                <div id="barcodeReaderBody">
+                    <video id="codeModalVideo" width="1280" height="720" autoplay></video>
+                    <canvas id="codeModalCanvas" width="1280" height="720" hidden></canvas>
+                    <canvas id="overlayCanvas" width="1280" height="720"></canvas>
                 </div>
                 <div class="modal-footer">
                     <button id="codeModalClose" type="button" class="btn btn-secondary">Close</button>

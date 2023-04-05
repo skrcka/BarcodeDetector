@@ -1,6 +1,9 @@
+const barcodeReaderBody = document.getElementById('barcodeReaderBody');
 const video = document.getElementById("codeModalVideo");
 const canvas = document.getElementById("codeModalCanvas");
 const context = canvas.getContext("2d");
+const overlayCanvas = document.getElementById('overlayCanvas');
+const overlayContext = overlayCanvas.getContext('2d');
 let scanning = false;
 
 async function startVideo(id) {
@@ -11,6 +14,7 @@ async function startVideo(id) {
 		video.srcObject = stream;
 		video.addEventListener("loadedmetadata", async () => {
 			video.play();
+			updateCanvasSizeAndDrawing();
 			await scanBarcode(id);
 		});
 	} catch (err) {
@@ -70,3 +74,33 @@ function openCodeScanner(id) {
 	$("#scanModal").modal("show");
 	scanning = true;
 }
+
+function updateCanvasSizeAndDrawing() {
+	const containerWidth = barcodeReaderBody.clientWidth;
+	const containerHeight = barcodeReaderBody.clientHeight;
+  
+	canvas.width = containerWidth;
+	canvas.height = containerHeight;
+	overlayCanvas.width = containerWidth;
+	overlayCanvas.height = containerHeight;
+  
+	const barcodeX = containerWidth * 0.1;
+	const barcodeY = containerHeight * 0.5;
+	const barcodeWidth = containerWidth - containerWidth * 0.2;
+	console.log(barcodeX, barcodeY, barcodeWidth);
+  
+	// Draw the red line for reading
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	overlayContext.strokeStyle = "red";
+	overlayContext.lineWidth = 3;
+	overlayContext.beginPath();
+	overlayContext.moveTo(barcodeX, barcodeY);
+	overlayContext.lineTo(barcodeX + barcodeWidth, barcodeY);
+	overlayContext.stroke();
+  }
+
+window.addEventListener('resize', updateCanvasSizeAndDrawing);
+
+$(document).ready(function () {
+	updateCanvasSizeAndDrawing();
+});
