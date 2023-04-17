@@ -9,7 +9,13 @@ let scanning = false;
 async function startVideo(id) {
 	try {
 		const stream = await navigator.mediaDevices.getUserMedia({
-			video: { facingMode: "environment", aspectRatio: { exact: 1.5 }},
+			video: {
+				facingMode: "environment", 
+				aspectRatio: { ideal: 16/9 },
+				width: { min: 480, ideal: 1280, max: 1920 },
+    			height: { min: 270, ideal: 720, max: 1080},
+				frameRate: { min: 5, ideal: 30, max: 120 },
+			},
 		});
 		video.srcObject = stream;
 		video.addEventListener("loadedmetadata", async () => {
@@ -28,8 +34,9 @@ async function scanBarcode(id) {
 	const barcodeDetector = new BarcodeDetector({ formats: ["itf", "code_128"] });
 
 	try {
-		context.drawImage(video, 0, 0, canvas.width, canvas.height);
+		context.drawImage(video, 0, 0, 1280, 720);
 		const barcodes = await barcodeDetector.detect(canvas);
+		$('#testbox').val(barcodes.length);
 
 		if (barcodes.length > 0) {
 			barcodes.forEach((barcode) => {
