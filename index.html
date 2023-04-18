@@ -26,13 +26,13 @@
                 </div>
                 <div id="barcodeInnerBody">
                     <div id="barcodeReaderBody">
-                        <video id="codeModalVideo" width="1280" height="720" autoplay hidden></video>
-                        <canvas id="codeModalCanvas" width="1280" height="720"></canvas>
-                        <canvas id="overlayCanvas" width="1280" height="720"></canvas>
+                        <video id="codeModalVideo" width="720" height="720" autoplay hidden></video>
+                        <canvas id="codeModalCanvas" width="720" height="720"></canvas>
+                        <canvas id="overlayCanvas" width="720" height="720"></canvas>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input id="testbox" type="text" value="" />
+                    <audio id="beeper" src="beep.mp3" type="audio/mp3" preload="auto" hidden></audio>
                     <button id="codeModalClose" type="button" class="btn btn-secondary">Close</button>
                 </div>
             </div>
@@ -48,7 +48,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="//webrtc.github.io/adapter/adapter-latest.js" type="text/javascript"></script>
-    <script src="barcodeScanner.js"></script>
+    <script src="barcodeScannerV2.js"></script>
 </body>
 
 </html>
