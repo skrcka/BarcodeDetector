@@ -82,10 +82,10 @@ $("#scanModal").on("hidden.bs.modal", function () {
 	stop();
 });
 
-function openCodeScanner(id) {
+function otevriKameru(id) {
 	if (!("BarcodeDetector" in window)) {
-		//alert("Tento prohlížeč/zařízení nepodporuje detekci čárových kódů.");
-		//return;
+		alert("Tento prohlížeč/zařízení nepodporuje detekci čárových kódů.");
+		return;
 	}
 	startVideo(id);
 	$("#scanModal").modal("show");
