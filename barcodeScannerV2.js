@@ -15,7 +15,7 @@ async function startVideo(id) {
 
 		const stream = await navigator.mediaDevices.getUserMedia({
 			video: {
-				deviceId: rearCamera.deviceId, 
+				deviceId: rearCamera.deviceId,
 				zoom: { ideal: 1 }
 			},
 		});
@@ -46,7 +46,6 @@ async function scanBarcode(id) {
         // Draw the video respecting the aspect ratio
         context.drawImage(video, (canvas.width - drawWidth) / 2, (canvas.height - drawHeight) / 2, drawWidth, drawHeight);
         const barcodes = await barcodeDetector.detect(canvas);
-        $('#testbox').val(barcodes.length);
 
         if (barcodes.length > 0) {
 			beeper.play();
@@ -105,7 +104,6 @@ function updateCanvasSizeAndDrawing() {
 	const barcodeX = containerWidth * 0.1;
 	const barcodeY = canvas.height * 0.5;
 	const barcodeWidth = containerWidth - containerWidth * 0.2;
-	console.log(barcodeX, barcodeY, barcodeWidth);
 
 	// Draw the red line for reading
 	overlayContext.strokeStyle = "red";
